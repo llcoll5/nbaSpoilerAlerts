@@ -4,6 +4,7 @@ name: Execute main.py
 on:
   schedule:
     - cron: '0 8 * * *'   # Executa a les 8:00 AM UTC+1
+    - cron: '0 13 * * *'   # Executa a les 8:00 AM UTC+1
 
 jobs:
   executar_script:
