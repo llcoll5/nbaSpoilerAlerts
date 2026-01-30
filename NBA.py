@@ -1,3 +1,4 @@
+import re
 from Requester import RequestGetter
 
 class NBA(RequestGetter):
@@ -24,7 +25,16 @@ class NBA(RequestGetter):
         return game_code.split("/")[0]
 
     def get_teams_from_game_code(self, game_code):
-        teams = game_code.split("/")[1]
+        code_split = game_code.split("/")
+        if len(code_split) < 2:
+            pattern = r"([A-Z]{6})"
+            teams = re.findall(pattern, game_code)
+            if teams:
+                teams = teams[0]
+            else:
+                return []
+        else:
+            teams = game_code.split("/")[1]
         first_team, second_team = teams[:3], teams[3:]
         return [first_team, second_team]
 
@@ -42,5 +52,8 @@ class NBA(RequestGetter):
 
 if __name__ == "__main__":
     nba = NBA()
+    print(nba.get_teams_from_game_code("20260129MIACHI"))
+    """
     for game, url in nba.get_game_urls().items():
         print(f"Game: {game}, URL: {url}")
+        """
