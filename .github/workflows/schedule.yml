@@ -2,6 +2,7 @@ name: Execute main.py
 
 # Defineix l'horari (3 execucions al dia)
 on:
+  workflow_dispatch: {} 
   schedule:
     - cron: '0 8 * * *'   # Executa a les 8:00 AM UTC+1
 
