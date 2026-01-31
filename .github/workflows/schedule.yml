@@ -26,7 +26,7 @@ jobs:
     - name: Execute main.py
       env:
         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}  
-        EMAIL_RECEIVERS: ${{ secrets.EMAIL_RECEIVER }}  
+        EMAIL_RECEIVERS: ${{ secrets.EMAIL_RECEIVERS }}  
         EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}  
       run: |
         python main.py  
