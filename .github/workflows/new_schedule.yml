@@ -1,4 +1,4 @@
-name: Execute main.py
+name: New execute main.py
 
 # Defineix l'horari (3 execucions al dia)
 on:
@@ -22,7 +22,7 @@ jobs:
       run: |
         pip install -r requirements.txt 
         
-    - name: Execute main.py
+    - name: New execute main.py
       env:
         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}  
         EMAIL_RECEIVERS: ${{ secrets.EMAIL_RECEIVER }}  
