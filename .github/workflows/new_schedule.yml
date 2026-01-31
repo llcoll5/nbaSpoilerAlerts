@@ -1,0 +1,31 @@
+name: Execute main.py
+
+# Defineix l'horari (3 execucions al dia)
+on:
+  schedule:
+    - cron: '40 8 * * *'   # Executa a les 8:00 AM UTC+1
+
+jobs:
+  executar_script:
+    runs-on: ubuntu-latest  # Utilitza un entorn Linux
+
+    steps:
+    - name: Clonar el repositori
+      uses: actions/checkout@v3  # Clona el codi del repositori
+
+    - name: Configurar Python
+      uses: actions/setup-python@v4  # Configura l'entorn Python
+      with:
+        python-version: '3.9'  # Especifica la versió de Python
+
+    - name: Instal·lar les dependències
+      run: |
+        pip install -r requirements.txt 
+        
+    - name: Execute main.py
+      env:
+        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}  
+        EMAIL_RECEIVERS: ${{ secrets.EMAIL_RECEIVER }}  
+        EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}  
+      run: |
+        python main.py  
