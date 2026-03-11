@@ -78,7 +78,7 @@ def send_email_games(sender, games, games_urls, receiver, nba):
                     <td height="10"></td>
                   </tr>
     """
-    list_items = joiner.(list_items)
+    list_items = joiner.join(list_items)
     html = html.format(list_items=list_items)
     try:
         sender.send_email(subject, html, receiver)
